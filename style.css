@@ -12,9 +12,11 @@
   --suface-color-hover:rgba(225, 225, 225, 0.05);
   --social-link-color-hover:rgba(225, 225, 225, 0.2);
   --switch-bg-url:  url(assets/assets/moon-stars.svg);
+  --cor-padding-boton: rgba(158, 131, 161, 0.5);
 }
 
 .light{
+  
   --text-color: black;
   --bg-url: url(assets/assets/bg-mobile-light.jpg);
  --strock-color:rgba(0, 0, 0, 0.5);
@@ -22,6 +24,7 @@
   --suface-color-hover:rgba(0, 0, 0, 0.02);
   --social-link-color-hover: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url(assets/assets/sun.svg);
+  --cor-padding-boton: rgba(166, 164, 168, 0.5);
 }
 
 body {
@@ -79,11 +82,21 @@ body * {
 
   top: 50%;
   transform: translateY(-50%);
+/* não preciso colocar o forwards pq ele vai manter a propiredades finais do meu animation mas nesse caso não precisa ja que a propiedade final no caso o left ja e zero*/
+  animation: slide-to .3s;
+}
+
+#switch button:hover{
+  outline: 7px solid var(--cor-padding-boton);
 }
 
 .light #switch button{
+  /* não vou precisar mais dessas propriedades pq eu vou usar a propriedade animation que ja vai conter essas propriedades
+  
   right: 0;
-  left: initial;
+  left: initial; */
+
+  animation: slide-in .3s forwards;
 }
 
 #switch span{
@@ -198,4 +211,29 @@ footer{
 
 }
 
+/* animation switch */
 
+@keyframes slide-in{
+/* onde ele vai começar */
+from{
+  left: 0;
+}
+
+/* e onde ele vai terminar */
+to {
+  left: 50%;
+}
+
+}
+@keyframes slide-to{
+/* onde ele vai começar */
+from{
+  left: 50%;
+}
+
+/* e onde ele vai terminar */
+to {
+  left: 0;
+}
+
+}
